@@ -1,0 +1,35 @@
+<!-- SVG filter definition -->
+<svg style="position: absolute; width: 0; height: 0;">
+    <filter id="gooey">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="gaussian-res" />
+
+        <feColorMatrix in="gaussian-res" result="matrix-res" mode="matrix" values="
+            1 0 0 0 0
+            0 1 0 0 0
+            0 0 1 0 0
+            0 0 0 20 -10
+        " />
+
+        <feComposite in="matrix-res" operator="atop"></feComposite>
+    </filter>
+</svg>
+
+@if (state() !== 'hidden') {
+<div class="toast" [class.entering]="state() === 'entering'" [class.exiting]="state() === 'exiting'">
+    <!-- Background shapes -->
+    <div class="gooey-bg">
+        <div class="pill"></div>
+        <div class="body-shape"></div>
+    </div>
+
+    <!-- Text overlays -->
+    <div class="toast-header">
+        <p class="header">Success.</p>
+    </div>
+    <div class="toast-content">
+        <p class="body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim recusandae beatae ex error vero libero repellendus.
+        </p>
+    </div>
+</div>
+}
